@@ -149,9 +149,23 @@ export default function Unsupervised() {
             {/* Labels for clusters */}
             {isClustered && (
               <motion.div initial={{opacity:0}} animate={{opacity:1}} transition={{delay: 1.5}}>
-                  <div className="absolute top-[20%] left-[20%] bg-white/90 px-4 py-2 rounded-xl shadow-lg border border-rose-200 text-rose-700 text-sm font-bold z-20">العملاء النشطون</div>
-                  <div className="absolute bottom-[20%] right-[20%] bg-white/90 px-4 py-2 rounded-xl shadow-lg border border-emerald-200 text-emerald-700 text-sm font-bold z-20">عملاء الجملة</div>
-                  <div className="absolute top-[20%] right-[45%] bg-white/90 px-4 py-2 rounded-xl shadow-lg border border-indigo-200 text-indigo-700 text-sm font-bold z-20">المشترون الجدد</div>
+                {Object.entries(CENTERS).map(([id, center]) => {
+                  const label = id === '1' ? 'العملاء النشطون' : id === '2' ? 'عملاء الجملة' : 'المشترون الجدد';
+                  const textColor = id === '1' ? 'text-rose-700 border-rose-200' : id === '2' ? 'text-emerald-700 border-emerald-200' : 'text-indigo-700 border-indigo-200';
+                  return (
+                    <div 
+                      key={`label-${id}`}
+                      className={`absolute bg-white/90 px-4 py-2 rounded-xl shadow-lg border text-sm font-bold z-20 ${textColor}`}
+                      style={{
+                        left: `${center.x}%`,
+                        top: `${center.y - 20}%`,
+                        transform: 'translate(-50%, -50%)'
+                      }}
+                    >
+                      {label}
+                    </div>
+                  );
+                })}
               </motion.div>
             )}
           </div>
