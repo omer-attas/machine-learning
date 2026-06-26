@@ -1,0 +1,6 @@
+{
+  "name": "محاكاة تعلم الآلة",
+  "description": "برمجية تعليمية تفاعلية لشرح أنواع تعلم الآلة لطلاب المرحلة الثانوية",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
